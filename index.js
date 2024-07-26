@@ -1,14 +1,21 @@
+const cors = require('cors')
 const express = require('express')
-
+const {config}= require('./config/config')
 const app = express()
-const port = 4000
 
 
 
-app.get(('/'),(req,res)=>{
-res.send('hola a todos ')
-})
 
+
+
+
+
+
+
+
+
+
+const port = config.port
 app.listen(port,()=>{
-    console.log('server runinr in port'+ port);
+    console.log(`servidor cuorriendo en el puerto: ${port}`);
 })
