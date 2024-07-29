@@ -17,13 +17,32 @@ ReleseDate:{
     field:'relese_date',
     type:DataTypes.STRING,
     allowNull:false
-}}
+},
+artistId:{
+    field:'artist_id',
+    allowNull:false,
+    type:DataTypes.INTEGER,
+    references:{
+        model:'artist',
+        key:'id'
+    },
+    onUpdate:'CASCADE',
+    onDelete:'SET NULL'
+}
+}
 
 
 
 class Album extends Model{
     static associate(models){
-        //
+        this.hasMany(models.Song,{
+            as:'songs',
+            foreignKey:'albumId'
+        })
+        this.belongsTo(models.Artist,{
+            as:'artist',
+            foreignKey:'artistId'
+        })
     }
     static config(sequelize){
         return{

@@ -1,4 +1,4 @@
-const { Song, SongSchema } = require('./songs.model');
+const { Song, SongSchema } = require('./song.model');
 const { Artist, ArtistSchema } = require('./artist.model');
 const { Genre, GenresSchema } = require('./genres.model');
 const { User, UserSchema } = require('./user.model');
@@ -15,6 +15,15 @@ function setUpModels(sequelize) {
     Manager.init(ManagerSchema, Manager.config(sequelize));
     Album.init(AlbumSchema, Album.config(sequelize));
     PlayList.init(PlaylistSchema, PlayList.config(sequelize));
+
+    //asociaciones
+    Song.associate(sequelize.models);
+    Album.associate(sequelize.models);
+    Genre.associate(sequelize.models);
+    Manager.associate(sequelize.models);
+    Artist.associate(sequelize.models);
+    PlayList.associate(sequelize.models);
+    User.associate(sequelize.models);
 
 }
 

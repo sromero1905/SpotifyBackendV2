@@ -12,13 +12,27 @@ id:{
 title:{
     allowNull:false,
     type:DataTypes.STRING
+},
+userId:{
+    field:'user_id',
+    allowNull:false,
+    type:DataTypes.INTEGER,
+    references:{
+        model:'user',
+        key:'id'
+    },
+    onUpdate:'CASCADE',
+    onDelete:'SET NULL'
 }
 
 }
 
 class PlayList extends Model{
     static associate(models){
-        //
+        this.belongsTo(models.User,{
+            as:'user',
+            foreignKey:'userId'
+        })
     }
     static config(sequelize){
         return{

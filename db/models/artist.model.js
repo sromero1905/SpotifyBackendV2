@@ -31,6 +31,17 @@ birthDate:{
     allowNull:true,
     type:DataTypes.DATE,
     field:'birth_date'
+},
+managerId:{
+    field:'manager_id',
+    allowNull:false,
+    type:DataTypes.INTEGER,
+    references:{
+        model:'manager',
+        key:'id'
+    },
+    onUpdate:'CASCADE',
+    onDelete:'SET NULL'
 }
 
 
@@ -43,7 +54,14 @@ birthDate:{
 
 class Artist extends Model{
     static associate(models){
-        //
+        this.belongsTo(models.Album,{
+            as:'album',
+            foreignKey:'artistId'
+        })
+        this.hasMany(models.Manager,{
+            as:'manager',
+            foreignKey:'managerId'
+        })
     }
     static config(sequelize){
         return{

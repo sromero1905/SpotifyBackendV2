@@ -33,7 +33,10 @@ createdAt:{
 
 class User extends Model{
     static associate(models){
-        //
+        this.hasMany(models.Playlist,{
+            as:'User',
+            foreignKey:'userId'
+        })
     }
     static config(sequelize){
         return{

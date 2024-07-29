@@ -38,7 +38,10 @@ password:{
 
 class Manager extends Model{
     static associate(models){
-        //
+        this.hasMany(models.Artist,{
+            as:'artists',
+            foreignKey:'managerId'
+        })
     }
     static config(sequelize){
         return{
