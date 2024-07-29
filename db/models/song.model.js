@@ -58,6 +58,18 @@ class Song extends Model{
             as:'gere',
             foreignKey:'genreId'
         })
+        this.belongsToMany(models.Artis,{
+            through:models.ArtistSong,
+            as:'artists',
+            foreignKey:'songId',
+            otherKey:'artistId'
+        })
+        this.belongsToMany(models.Playlist,{
+            through:models.PlaylisSong,
+            as:'playlists',
+            foreignKey:'songId',
+            otherKey:'playlistId'
+        })
     }
     static config(sequelize){
         return{

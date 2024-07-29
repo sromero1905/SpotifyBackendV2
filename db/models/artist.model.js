@@ -62,6 +62,12 @@ class Artist extends Model{
             as:'manager',
             foreignKey:'managerId'
         })
+        this.belongsToMany(models.Song,{
+            through:models.ArtistSong,
+            as:'songs',
+            foreignKey:'artistId',
+            otherKey:'songId'
+        })
     }
     static config(sequelize){
         return{

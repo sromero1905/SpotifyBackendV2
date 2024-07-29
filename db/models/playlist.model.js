@@ -33,6 +33,12 @@ class PlayList extends Model{
             as:'user',
             foreignKey:'userId'
         })
+        this.belongsToMany(models.Song,{
+            through:models.PlaylistSong,
+            as:'songs',
+            foreignKey:'playlistId',
+            otherKey:'songId'
+        })
     }
     static config(sequelize){
         return{

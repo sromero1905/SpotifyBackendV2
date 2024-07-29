@@ -3,7 +3,7 @@ const {Sequelize, DataTypes, Model }= require('sequelize')
 
 const GENRES_TABLE = 'genre';
 
-const GenreScehma = {
+const GenreSchema = {
 id:{
     allowNull:false,
     autoIncrement:true,
